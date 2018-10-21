@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: comunicados
+#
+#  id               :bigint(8)        not null, primary key
+#  titulo           :string
+#  mensaje          :text
+#  mensaje_markdown :text
+#  archivo          :string
+#  prioridad        :boolean
+#  user_id          :bigint(8)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  mensaje: MyText
+  mensaje_markdown: MyText
+  visitas: 1
+  prioridad: false
+  user: one
+
+two:
+  titulo: MyString
+  mensaje: MyText
+  mensaje_markdown: MyText
+  visitas: 1
+  prioridad: false
+  user: two

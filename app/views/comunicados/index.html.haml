@@ -1,0 +1,27 @@
+%h1 Listing comunicados
+
+%table
+  %thead
+    %tr
+      %th Titulo
+      %th Mensaje
+      %th Mensaje markdown
+      %th Archivo
+      %th Prioridad
+      %th
+      %th
+
+  %tbody
+    - @comunicados.each do |comunicado|
+      %tr
+        %td= comunicado.titulo
+        %td= comunicado.mensaje
+        %td= comunicado.mensaje_markdown
+        %td=  link_to File.basename(comunicado.archivo.url), "~/uploads/archivos/#{comunicado.id}/#{File.basename(comunicado.archivo.url)}"
+        %td= comunicado.prioridad
+        %td= link_to 'Show', comunicado
+        %td= link_to 'Destroy', comunicado, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Comunicado', new_comunicado_path
