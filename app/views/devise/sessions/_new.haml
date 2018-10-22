@@ -1,0 +1,12 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+	.input-field.col.s12.l6
+		%i.material-icons.prefix.medium account_circle
+		= f.email_field :email, autofocus: true, class:"validate"
+		= f.label :email,data:{error:"No es un correo", success:"✓"}
+	.input-field.col.s12.l6
+		%i.material-icons.prefix.medium lock_outline
+		= f.password_field :password, autocomplete: "off"
+		= f.label :password
+	%br/
+	.input-field.col.s12
+		= f.submit "Iniciar sesión", class:"col s12 btn waves-effect waves-light new-button"
