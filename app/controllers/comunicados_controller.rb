@@ -1,14 +1,10 @@
 class ComunicadosController < ApplicationController
-	before_action :set_comunicado, only: [:show, :destroy, :download]
+	before_action :set_comunicado, only: [:destroy, :download]
 	before_action :authenticate_user!, only:[:create, :new, :destroy]
 
 	# GET /comunicados
 	def index
 		@comunicados = Comunicado.all
-	end
-
-	# GET /comunicados/1
-	def show
 	end
 
 	# GET /comunicados/new
@@ -22,7 +18,7 @@ class ComunicadosController < ApplicationController
 
 		respond_to do |format|
 			if @comunicado.save
-				format.html { redirect_to @comunicado, notice: 'Se agrego un comunicado correctamenet' }
+				format.html { redirect_to comunicados_path, notice: 'Se agrego un comunicado correctamenet' }
 			else
 				format.html { render :new }
 			end
