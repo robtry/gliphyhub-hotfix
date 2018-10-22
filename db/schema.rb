@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_10_21_233901) do
   create_table "comunicados", force: :cascade do |t|
     t.string "titulo"
     t.text "mensaje"
-    t.text "mensaje_markdown"
     t.string "archivo"
     t.boolean "prioridad"
     t.bigint "user_id"

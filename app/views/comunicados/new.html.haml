@@ -1,5 +1,7 @@
-%h1 New comunicado
+= render "navs/nav"
+%br/
+= link_to 'Regresar', comunicados_path
+.container
+    %h1 Nuevo comunicado
+    = render 'form'
 
-= render 'form'
-
-= link_to 'Back', comunicados_path

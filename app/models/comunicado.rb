@@ -15,5 +15,7 @@
 
 class Comunicado < ApplicationRecord
   belongs_to :user
+  validates :titulo, presence: true, length: { in: 5..30 }  
+  validates :mensaje, presence: true
 	mount_uploader :archivo, DocUploader
 end

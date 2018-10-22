@@ -1,25 +1,52 @@
-= form_for @comunicado do |f|
-  - if @comunicado.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@comunicado.errors.count, "error")} prohibited this comunicado from being saved:"
-      %ul
-        - @comunicado.errors.full_messages.each do |message|
-          %li= message
+-# = form_for @comunicado do |f|
+-#   - if @comunicado.errors.any?
+-#     #error_explanation
+-#       %h2= "#{pluralize(@comunicado.errors.count, "error")} prohibited this comunicado from being saved:"
+-#       %ul
+-#         - @comunicado.errors.full_messages.each do |message|
+-#           %li= message
 
-  .field
-    = f.label :titulo
-    = f.text_field :titulo
-  .field
-    = f.label :mensaje
-    = f.text_area :mensaje
-  .field
-    = f.label :mensaje_markdown
-    = f.text_area :mensaje_markdown
-  .field
-    = f.label :archivo
-    = f.file_field :archivo
-  .field
-    = f.label :prioridad
-    = f.check_box :prioridad
-  .actions
-    = f.submit 'Save'
+-#   .field
+-#     = f.label :titulo
+-#     = f.text_field :titulo
+-#   .field
+-#     = f.label :mensaje
+-#     = f.text_area :mensaje
+-#   .field
+-#     = f.label :mensaje_markdown
+-#     = f.text_area :mensaje_markdown
+-#   .field
+-#     = f.label :archivo
+-#     = f.file_field :archivo
+-#   .field
+-#     = f.label :prioridad
+-#     = f.check_box :prioridad
+-#   .actions
+-#     = f.submit 'Save'
+.row
+	.col.s12.l8{:style=>"margin-top: 1em"}
+		= form_for @comunicado,:html=>{:id=>"formulario_comunicado"} do |f|
+			.input-field.col.s12
+				- if @comunicado.errors.any?
+					.red.lighten-2{style:"padding:10px"}
+						%i.material-icons.left warning
+						%h6= "#{pluralize(@comunicado.errors.count, "problema(s)")} ocurrio al guardar publicar ponga los filtros de nuevo"
+				- @comunicado.errors.full_messages.each do |msg|
+					%script M.toast({html: '#{msg}'})
+			.input-field.col.s12
+				= f.text_field :titulo
+				= f.label :titulo
+			.input-field.col.s12
+				= f.label :mensaje
+				= f.text_area :mensaje, class:"materialize-textarea"
+			.input-field.col.s12
+				= f.file_field :comunicado_archivo, value: @archivo_comunicado
+			.input-field.col.s12
+				%label
+					= f.check_box :prioridad
+					%span URGENTE
+			.input-field.col.s12
+			%br/
+			%br/
+			%br/
+			= f.submit "subir", class:"btn waves-effect waves-light red"

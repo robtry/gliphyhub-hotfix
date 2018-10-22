@@ -45,6 +45,6 @@ class ComunicadosController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def comunicado_params
-			params.require(:comunicado).permit(:titulo, :mensaje, :mensaje_markdown, :archivo, :prioridad)
+			params.require(:comunicado).permit(:titulo, :mensaje, :archivo, :prioridad)
 		end
 end
